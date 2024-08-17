@@ -1,6 +1,6 @@
 import { api } from 'src/boot/axios';
 import { DomainEntityPlayer } from '../Entity/DomainEntityPlayer';
-import PlayerList from '@/components/Player/List/PlayerList.vue';
+import { UnwrapRef } from 'vue';
 
 export default class DomainServiceServer {
   public async getPlayerList(): Promise<DomainEntityPlayer[]> {
@@ -20,8 +20,8 @@ export default class DomainServiceServer {
     await this.#apiPost('player/update/' + player.getId(), { score: player.getScore() });
   }
 
-  public async resetScore(playerList: DomainEntityPlayer[]): Promise<void> {
-    await this.#apiPost(('player/reset'), {playerList: playerList});
+  public async resetScore(playerList: UnwrapRef<DomainEntityPlayer[]>): Promise<void> {
+    await this.#apiPost(('player/resetScore'), {playerList: playerList});
   }
 
   async #apiGet(url: string) {

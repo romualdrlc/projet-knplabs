@@ -3,7 +3,7 @@
     <PlayerCard v-for="player in playerStore.playerList" :key="player.getName()" :player-entity="player" />
   </div>
   <q-btn round icon="fa-solid fa-circle-xmark" @click="savePlayer" />
-  <q-btn round icon="fa-solid fa-circle-xmark" @click="resetScore" />
+  <q-btn color="black" label="Reset score" @click="resetScore"/>
 </template>
 
 <script setup lang="ts">
